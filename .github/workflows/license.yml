@@ -27,6 +27,8 @@ jobs:
       uses: peter-evans/create-pull-request@v3
       with:
         commit-message: "chore: add license header(s)"
+        author: GitHub <noreply@github.com>
+        committer: GitHub <noreply@github.com>
         title: "chore: add license header(s)"
         body: Add missing license header(s) in source and test code.
         branch: add-license
