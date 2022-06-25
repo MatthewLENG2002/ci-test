@@ -2,13 +2,9 @@ name: Check license header
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
   pull_request:
-    types:
-      - opened
-      - edited
-      - synchronize
+    types: [ opened, synchronize, edited ]
 
 jobs:
   check:
@@ -19,7 +15,8 @@ jobs:
     - run: |
         echo ${{ github.event_name }}
         echo ${{ github.actor }}
-        echo ${{ contains(${{ github.event_name }}, 'pull_request') }}
+        echo ${{ github.event_name == 'push' }}
+        echo ${{ github.event_name == 'pull_request' }}
     
     
     - name: Checkout commit
