@@ -43,8 +43,8 @@ jobs:
       if: github.event_name == 'pull_request'
       uses: EndBug/add-and-commit@v8.0.2
       with:
-        author_name: ${{ github.event.pull_request.author }}
-        author_email: ${{ github.event.pull_request.author }}@users.noreply.github.com
+        author_name: ${{ github.event.pull_request.head.repo.owner.login }}
+        author_email: ${{ github.event.pull_request.head.repo.owner.login }}@users.noreply.github.com
         message: "chore: add license header(s)"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
