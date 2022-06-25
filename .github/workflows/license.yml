@@ -44,6 +44,7 @@ jobs:
       if: github.event_name == 'push'
       uses: peter-evans/create-pull-request@v3
       with:
+        author: GitHub <noreply@github.com>
         commit-message: "chore: add license header(s)"
         title: "chore: add license header(s)"
         body: Add missing license header(s) in source and test code.
