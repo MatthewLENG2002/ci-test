@@ -35,7 +35,7 @@ jobs:
       if: github.event_name == 'push'
       uses: peter-evans/create-pull-request@v3
       with:
-        author: GitHub <noreply@github.com>
+        author: GitHub Actions <41898282+github-actions[bot]@users.noreply.github.com>
         commit-message: "chore: add license header(s)"
         title: "chore: add license header(s)"
         body: Add missing license header(s) in source and test code.
@@ -45,8 +45,8 @@ jobs:
       if: github.event_name == 'pull_request'
       uses: EndBug/add-and-commit@v8.0.2
       with:
-        author_name: GitHub
-        author_email: noreply@github.com
+        author_name: GitHub Actions
+        author_email: 41898282+github-actions[bot]@users.noreply.github.com
         message: "chore: add license header(s)"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
