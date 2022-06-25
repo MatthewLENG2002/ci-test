@@ -11,8 +11,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout
+    - name: Checkout commit
+      if: github.event_name != 'pull_request'
       uses: actions/checkout@v3
+
+    - name: Checkout pull request
+      if: github.event_name == 'pull_request'
+      uses: actions/checkout@v3
+      with:
+        repository: ${{ github.event.pull_request.head.repo.full_name }}
+        ref: ${{ github.event.pull_request.head.ref }}
 
     - name: Check license headers
       uses: apache/skywalking-eyes@v0.3.0
@@ -27,8 +35,6 @@ jobs:
       uses: peter-evans/create-pull-request@v3
       with:
         commit-message: "chore: add license header(s)"
-        author: GitHub <noreply@github.com>
-        committer: GitHub <noreply@github.com>
         title: "chore: add license header(s)"
         body: Add missing license header(s) in source and test code.
         branch: add-license
